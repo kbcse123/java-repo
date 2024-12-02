@@ -1,6 +1,7 @@
 @import com.order.food.model.Item
 @param java.util.List<Item> items
-
+@param String env
+@param int cartCount
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +47,8 @@
 
 
 <!-- Navbar start -->
-<div hx-get="/header" hx-trigger="load"></div>
+@template.header(env = env,cartCount = cartCount)
+<%--<div hx-get="/header" hx-trigger="load"></div>--%>
 <!-- Navbar End -->
 
 
@@ -57,7 +59,8 @@
 
 
 <!-- Footer Start -->
-<div hx-get="/footer" hx-trigger="load"></div>
+<%--<div hx-get="/footer" hx-trigger="load"></div>--%>
+@template.footer()
 <!-- Footer End -->
 
 
