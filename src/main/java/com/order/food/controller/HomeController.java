@@ -11,14 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @AllArgsConstructor
 public class HomeController {
     private ItemService itemService;
-    private static String ENV = System.getProperty("spring.profiles.active");
+    //private static int CART_COUNT = 0;
 
     @GetMapping("/header")
     public String header() {
@@ -34,76 +33,57 @@ public class HomeController {
 
     @GetMapping("/cartCounter")
     public String cartCounter(Model model, HttpServletRequest request) {
-        if (request.getSession().getAttribute("cartCount") != null) {
-            int cartCount = (Integer) request.getSession().getAttribute("cartCount");
-            model.addAttribute("cartCount", cartCount);
-        }
+       int cartCount = (Integer) request.getSession().getAttribute("cartCount");
+        model.addAttribute("cartCount", cartCount);
         System.out.println("in cartCounter");
         return "cartCounter";
     }
 
     @GetMapping(value = {"/", "/home"})
     public String index(Model model, HttpServletRequest request) {
-        model.addAttribute("env", ENV);
-        updateCartCount(model, request, false);
-        loadItems(model);
-        return "home";
-    }
-
-
-    @GetMapping("/home-content")
-    public String homeContent(Model model) {
-        loadItems(model);
-        return "home-content";
-    }
-
-    private void loadItems(Model model) {
-        List<Item> items = itemService.getItems();
-        model.addAttribute("items", items);
-    }
-
-    private void updateCartCount(Model model, HttpServletRequest request, boolean increment) {
         int cartCount = 0;
         if (request.getSession().getAttribute("cartCount") == null) {
             request.getSession().setAttribute("cartCount", cartCount);
         } else {
             cartCount = (Integer) request.getSession().getAttribute("cartCount");
         }
-        if (increment) {
-            request.getSession().setAttribute("cartCount",++cartCount);
-        }
+        List<Item> items = itemService.getItems();
+        model.addAttribute("items", items);
         model.addAttribute("cartCount", cartCount);
+        return "home";
+    }
+
+    @GetMapping("/home-content")
+    public String homeContent(Model model) {
+        List<Item> items = itemService.getItems();
+        model.addAttribute("items", items);
+        System.out.println("in home-content");
+        return "home-content";
     }
 
     @PostMapping("/addToCart/{itemId}")
     public String addToCart(Model model, @PathVariable int itemId, HttpServletRequest request) {
-        updateCartCount(model, request, true);
-        itemService.addToCart(itemId, request);
+        int cartCount = (Integer) request.getSession().getAttribute("cartCount");
+        cartCount++;
+        itemService.addToCart(itemId,request);
+        model.addAttribute("cartCount", cartCount);
+        request.getSession().setAttribute("cartCount", cartCount);
+
         return "cartCounter";
     }
+
 
     @GetMapping("/cart")
     public String cart(Model model, HttpServletRequest request) {
         System.out.println("in cart");
-
+        request.getSession().getAttribute("cartCount");
         return "cart";
     }
 
     @GetMapping("/cart-content")
     public String cartContent(Model model, HttpServletRequest request) {
+
         System.out.println("in cart-content");
-        List<Item> selectedItems;
-        if (request.getSession().getAttribute("selectedItems") == null) {
-            selectedItems = new ArrayList<>();
-            request.getSession().setAttribute("selectedItems", selectedItems);
-        } else {
-            selectedItems = (List<Item>) request.getSession().getAttribute("selectedItems");
-        }
-        if (request.getSession().getAttribute("cartCount") != null) {
-            int cartCount = (Integer) request.getSession().getAttribute("cartCount");
-            model.addAttribute("cartCount", cartCount);
-        }
-        model.addAttribute("selectedItems", selectedItems);
         return "cart-content";
     }
 
