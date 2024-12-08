@@ -9,4 +9,6 @@ public interface ItemService {
     List<Item> getItems();
 
     void addToCart(int itemId, HttpServletRequest request);
+
+    void deleteFromCart(int itemId, HttpServletRequest request);
 }

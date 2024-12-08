@@ -37,14 +37,15 @@
                                                 --%>
                                                 <div class="input-group quantity mt-4" style="width: 100px;">
                                                     <div class="input-group-btn">
-                                                        <button class="btn btn-sm btn-minus rounded-circle bg-light border">
+                                                        <button hx-delete="/cart/${item.getId()}" hx-target="#cartCounter"
+                                                                class="btn btn-sm btn-minus rounded-circle bg-light border">
                                                             <i class="fa fa-minus"></i>
                                                         </button>
                                                     </div>
-                                                    <input id="quantity" type="text" class="form-control form-control-sm text-center border-0"
-                                                           value="${item.getQuantity()}">
+                                                    <input  type="text" class="form-control form-control-sm text-center border-0"
+                                                           value="${item.getQuantity()}" readonly>
                                                     <div class="input-group-btn">
-                                                        <button hx-post="/addToCart/${item.getId()}" hx-target="#cartCounter, closest input"
+                                                        <button hx-post="/cart/${item.getId()}" hx-target="#cartCounter"
                                                                 class="btn btn-sm btn-plus rounded-circle bg-light border">
                                                             <i class="fa fa-plus"></i>
                                                         </button>
@@ -64,7 +65,7 @@
                             <div class="col-md-6 col-lg-4 col-xl-3">
                                 <div class="rounded position-relative fruite-item">
                                     <div class="fruite-img">
-                                        <img src="img/khichdi-khatta-keema.jpg" class="img-fluid w-100 rounded-top" alt="" style="height:250px" loading="lazy">
+                                        <img src="img/khichdi-khatta-keema.webp" class="img-fluid w-100 rounded-top" alt="" style="height:250px" loading="lazy">
                                     </div>
                                     <%--<div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>--%>
                                     <div class="p-4 border border-secondary border-top-0 rounded-bottom">

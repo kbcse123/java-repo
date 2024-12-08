@@ -1,6 +1,6 @@
 
 @import com.order.food.model.Item
-@param java.util.List<Item> selectedItems
+@param java.util.List<Item> items
 
 <!-- Cart Page Start -->
 <div id="main-content">
@@ -22,7 +22,9 @@
                             </thead>
                             <tbody>
 
-                            @for(Item item : selectedItems)
+                            @for(Item item : items)
+                                @if(item.getQuantity() > 0)
+
                                 <tr>
                                     <th scope="row">
                                         <div class="d-flex align-items-center">
@@ -39,14 +41,16 @@
                                     <td>
                                         <div class="input-group quantity mt-4" style="width: 100px;">
                                             <div class="input-group-btn">
-                                                <button class="btn btn-sm btn-minus rounded-circle bg-light border">
+                                                <button hx-delete="/cart/${item.getId()}" hx-target="#cartCounter, #item${item.getId()}"
+                                                        class="btn btn-sm btn-minus rounded-circle bg-light border">
                                                     <i class="fa fa-minus"></i>
                                                 </button>
                                             </div>
-                                            <input type="text" class="form-control form-control-sm text-center border-0"
-                                                   value="${item.getQuantity()}">
+                                            <input id="item${item.getId()}" type="text" class="form-control form-control-sm text-center border-0"
+                                                   value="${item.getQuantity()}" readonly>
                                             <div class="input-group-btn">
-                                                <button class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                                <button hx-post="/cart/${item.getId()}" hx-target="#cartCounter, #item${item.getId()}"
+                                                        class="btn btn-sm btn-plus rounded-circle bg-light border">
                                                     <i class="fa fa-plus"></i>
                                                 </button>
                                             </div>
@@ -62,6 +66,8 @@
                                     </td>
 
                                 </tr>
+
+                                @endif
                             @endfor
 
                             </tbody>

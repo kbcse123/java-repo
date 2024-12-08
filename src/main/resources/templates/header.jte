@@ -1,4 +1,4 @@
-
+@param String env
 <div class="container-fluid fixed-top bg-dark ">
     <%--
     <div class="container topbar bg-primary d-none d-lg-block">
@@ -18,7 +18,7 @@
     <div class="container px-0">
         <nav class="navbar navbar-light bg-dark navbar-expand-xl">
             <a href="/" class="navbar-brand">
-                <h1 class="text-primary display-6">Aapa jaan</h1>
+                <h1 class="text-primary display-6"  title="${env}">Happy Tummy</h1>
                 <%--<p class="text-secondary mb-0">Food is Memory</p>--%>
             </a>
             <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -27,12 +27,12 @@
             <div class="collapse navbar-collapse bg-dark" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
                     <%--<a href="/" class="nav-item nav-link ">Home</a>--%>
-                    <a href="#" hx-get="/home-content" hx-target="#main-content" hx-push-url="/home" class="nav-item nav-link text-secondary mb-0">Home</a>
+                    <a href="#" hx-get="/home-content" hx-target="#main-content" hx-push-url="/home" class="nav-item nav-link text-secondary mb-0 fs-5">Home</a>
                     <%--<a href="/cart" class="nav-item nav-link">Cart</a>--%>
-                    <a href="#" hx-get="/cart-content" hx-target="#main-content" hx-push-url="/cart" class="nav-item nav-link text-secondary mb-0">Cart</a>
-                    <a href="#" hx-get="/checkout-content" hx-target="#main-content" hx-push-url="/checkout" class="nav-item nav-link text-secondary mb-0">Checkout</a>
+                    <a href="#" hx-get="/cart-content" hx-target="#main-content" hx-push-url="/cart" class="nav-item nav-link text-secondary mb-0 fs-5">Cart</a>
+                    <a href="#" hx-get="/checkout-content" hx-target="#main-content" hx-push-url="/checkout" class="nav-item nav-link text-secondary mb-0 fs-5">Checkout</a>
                     <%--<a href="#" hx-get="/testimonial-content" hx-target="#main-content"  class="nav-item nav-link">Testimonial</a>--%>
-                    <a href="/contact" class="nav-item nav-link text-secondary mb-0">Contact</a>
+                    <a href="/contact" class="nav-item nav-link text-secondary mb-0 fs-5">Contact</a>
                    <%-- <a href="/search"  class="nav-item nav-link">Search</a>
                     <a href="/detail" class="nav-item nav-link">Detail</a>--%>
                     <%--<div class="nav-item dropdown">

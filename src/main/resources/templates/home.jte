@@ -1,6 +1,6 @@
 @import com.order.food.model.Item
 @param java.util.List<Item> items
-
+@param String env
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,20 +46,17 @@
 
 
 <!-- Navbar start -->
-@template.header()
-<%--<div hx-get="/header" hx-trigger="load"></div>--%>
+@template.header(env = env)
 <!-- Navbar End -->
 
 
 <!-- Main Content Start-->
 @template.home-content(items = items)
-<%--<div hx-get="/home-content" hx-trigger="load"></div>--%>
 <!-- Main Content End-->
 
 
 <!-- Footer Start -->
 @template.footer()
-<%--<div hx-get="/footer" hx-trigger="load"></div>--%>
 <!-- Footer End -->
 
 

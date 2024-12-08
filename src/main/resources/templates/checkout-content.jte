@@ -1,3 +1,6 @@
+@import com.order.food.model.Item
+@param java.util.List<Item> items
+
 <!-- Checkout Page Start -->
 <div id="main-content">
     <div class="container-fluid py-5">
@@ -10,43 +13,43 @@
                             <div class="col-md-12 col-lg-6">
                                 <div class="form-item w-100">
                                     <label class="form-label my-3">First Name<sup>*</sup></label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" required>
                                 </div>
                             </div>
                             <div class="col-md-12 col-lg-6">
                                 <div class="form-item w-100">
                                     <label class="form-label my-3">Last Name<sup>*</sup></label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" required>
                                 </div>
                             </div>
                         </div>
                         <div class="form-item">
                             <label class="form-label my-3">Company Name<sup>*</sup></label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" required>
                         </div>
                         <div class="form-item">
                             <label class="form-label my-3">Address <sup>*</sup></label>
-                            <input type="text" class="form-control" placeholder="House Number Street Name">
+                            <input type="text" class="form-control" placeholder="House Number Street Name" required>
                         </div>
                         <div class="form-item">
                             <label class="form-label my-3">Town/City<sup>*</sup></label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" required>
                         </div>
                         <div class="form-item">
                             <label class="form-label my-3">Country<sup>*</sup></label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" required>
                         </div>
                         <div class="form-item">
                             <label class="form-label my-3">Postcode/Zip<sup>*</sup></label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" required>
                         </div>
                         <div class="form-item">
                             <label class="form-label my-3">Mobile<sup>*</sup></label>
-                            <input type="tel" class="form-control">
+                            <input type="tel" class="form-control" required>
                         </div>
                         <div class="form-item">
                             <label class="form-label my-3">Email Address<sup>*</sup></label>
-                            <input type="email" class="form-control">
+                            <input type="email" class="form-control" required>
                         </div>
                         <div class="form-check my-3">
                             <input type="checkbox" class="form-check-input" id="Account-1" name="Accounts"
@@ -77,42 +80,26 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th scope="row">
-                                        <div class="d-flex align-items-center mt-2">
-                                            <img src="img/vegetable-item-2.jpg" class="img-fluid rounded-circle"
-                                                 style="width: 90px; height: 90px;" alt="">
-                                        </div>
-                                    </th>
-                                    <td class="py-5">Awesome Brocoli</td>
-                                    <td class="py-5">$69.00</td>
-                                    <td class="py-5">2</td>
-                                    <td class="py-5">$138.00</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <div class="d-flex align-items-center mt-2">
-                                            <img src="img/vegetable-item-5.jpg" class="img-fluid rounded-circle"
-                                                 style="width: 90px; height: 90px;" alt="">
-                                        </div>
-                                    </th>
-                                    <td class="py-5">Potatoes</td>
-                                    <td class="py-5">$69.00</td>
-                                    <td class="py-5">2</td>
-                                    <td class="py-5">$138.00</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <div class="d-flex align-items-center mt-2">
-                                            <img src="img/vegetable-item-3.png" class="img-fluid rounded-circle"
-                                                 style="width: 90px; height: 90px;" alt="">
-                                        </div>
-                                    </th>
-                                    <td class="py-5">Big Banana</td>
-                                    <td class="py-5">$69.00</td>
-                                    <td class="py-5">2</td>
-                                    <td class="py-5">$138.00</td>
-                                </tr>
+
+                                @for(Item item : items)
+                                    @if(item.getQuantity() > 0)
+
+                                        <tr class="align-items-center">
+                                            <th scope="row">
+                                                <div class="d-flex align-items-center mt-2">
+                                                    <img src="${item.getImagePath()}" class="img-fluid rounded-circle"
+                                                         style="width: 90px; height: 90px;" alt="">
+                                                </div>
+                                            </th>
+                                            <td class="py-5">${item.getName()}</td>
+                                            <td class="py-5">${item.getPrice()}</td>
+                                            <td class="py-5">${item.getQuantity()}</td>
+                                            <td class="py-5">${item.getTotal()}</td>
+                                        </tr>
+
+                                    @endif
+                                @endfor
+
                                 <tr>
                                     <th scope="row">
                                     </th>
@@ -127,86 +114,24 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">
-                                    </th>
-                                    <td class="py-5">
-                                        <p class="mb-0 text-dark py-4">Shipping</p>
-                                    </td>
-                                    <td colspan="3" class="py-5">
-                                        <div class="form-check text-start">
-                                            <input type="checkbox" class="form-check-input bg-primary border-0"
-                                                   id="Shipping-1" name="Shipping-1" value="Shipping">
-                                            <label class="form-check-label" for="Shipping-1">Free Shipping</label>
-                                        </div>
-                                        <div class="form-check text-start">
-                                            <input type="checkbox" class="form-check-input bg-primary border-0"
-                                                   id="Shipping-2" name="Shipping-1" value="Shipping">
-                                            <label class="form-check-label" for="Shipping-2">Flat rate: $15.00</label>
-                                        </div>
-                                        <div class="form-check text-start">
-                                            <input type="checkbox" class="form-check-input bg-primary border-0"
-                                                   id="Shipping-3" name="Shipping-1" value="Shipping">
-                                            <label class="form-check-label" for="Shipping-3">Local Pickup: $8.00</label>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                    </th>
-                                    <td class="py-5">
-                                        <p class="mb-0 text-dark text-uppercase py-3">TOTAL</p>
-                                    </td>
-                                    <td class="py-5"></td>
-                                    <td class="py-5"></td>
-                                    <td class="py-5">
-                                        <div class="py-3 border-bottom border-top">
-                                            <p class="mb-0 text-dark">$135.00</p>
-                                        </div>
-                                    </td>
-                                </tr>
+
                                 </tbody>
                             </table>
                         </div>
+
                         <div class="row g-4 text-center align-items-center justify-content-center border-bottom py-3">
                             <div class="col-12">
                                 <div class="form-check text-start my-3">
-                                    <input type="checkbox" class="form-check-input bg-primary border-0" id="Transfer-1"
-                                           name="Transfer" value="Transfer">
-                                    <label class="form-check-label" for="Transfer-1">Direct Bank Transfer</label>
-                                </div>
-                                <p class="text-start text-dark">Make your payment directly into our bank account. Please
-                                    use your Order ID as the payment reference. Your order will not be shipped until the
-                                    funds have cleared in our account.</p>
-                            </div>
-                        </div>
-                        <div class="row g-4 text-center align-items-center justify-content-center border-bottom py-3">
-                            <div class="col-12">
-                                <div class="form-check text-start my-3">
-                                    <input type="checkbox" class="form-check-input bg-primary border-0" id="Payments-1"
-                                           name="Payments" value="Payments">
-                                    <label class="form-check-label" for="Payments-1">Check Payments</label>
+                                    <input type="radio" id="payment1" name="payment" value="PhonePe">
+                                    <label for="payment1">PhonePe</label>
+                                    <br>
+                                    <input type="radio" id="payment2" name="payment" value="COD">
+                                    <label for="payment2">Cash On Delivery</label>
+                                    <br>
                                 </div>
                             </div>
                         </div>
-                        <div class="row g-4 text-center align-items-center justify-content-center border-bottom py-3">
-                            <div class="col-12">
-                                <div class="form-check text-start my-3">
-                                    <input type="checkbox" class="form-check-input bg-primary border-0" id="Delivery-1"
-                                           name="Delivery" value="Delivery">
-                                    <label class="form-check-label" for="Delivery-1">Cash On Delivery</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row g-4 text-center align-items-center justify-content-center border-bottom py-3">
-                            <div class="col-12">
-                                <div class="form-check text-start my-3">
-                                    <input type="checkbox" class="form-check-input bg-primary border-0" id="Paypal-1"
-                                           name="Paypal" value="Paypal">
-                                    <label class="form-check-label" for="Paypal-1">Paypal</label>
-                                </div>
-                            </div>
-                        </div>
+
                         <div class="row g-4 text-center align-items-center justify-content-center pt-4">
                             <button type="button"
                                     class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">Place Order

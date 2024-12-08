@@ -5,8 +5,8 @@
             <div class="row g-4">
                 <div class="col-lg-3">
                     <a href="#">
-                        <h1 class="text-primary mb-0">Aapa Jaan</h1>
-                        <p class="text-secondary mb-0">Food is Memory</p>
+                        <h1 class="text-primary mb-0">Happy Tummy</h1>
+                        <p class="text-secondary mb-0">Food to remember</p>
                     </a>
                 </div>
                 <div class="col-lg-6">
