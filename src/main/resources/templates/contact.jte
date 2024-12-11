@@ -1,9 +1,12 @@
+@param String env
+@param int cartCount
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>Fruitables - Vegetable Website Template</title>
+    <title>Happy Tummy</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -19,9 +22,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+   <%-- <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
+--%>
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -29,87 +32,26 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
 
 <body>
 
-<!-- Spinner Start -->
-<div id="spinner"
-     class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
-    <div class="spinner-grow text-primary" role="status"></div>
-</div>
-<!-- Spinner End -->
-
 
 <!-- Navbar start -->
-<div hx-get="/header" hx-trigger="load"></div>
+@template.header(env = env, cartCount = cartCount)
 <!-- Navbar End -->
 
 
-<div id="main-content">
-    <!-- Contact Start -->
-    <div class="container-fluid contact py-5">
-        <div class="container py-5">
-            <div class="p-5 bg-light rounded">
-                <div class="row g-4">
-                    <div class="col-12">
-                        <div class="text-center mx-auto" style="max-width: 700px;">
-                            <h1 class="text-primary">Get in touch</h1>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="h-100 rounded">
-                            <iframe class="rounded w-100"
-                                    style="height: 400px;"
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1903.6116323574668!2d78.39121613853243!3d17.401069895872144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb96a25681b0bb%3A0x38af44d5d275b57f!2sRoad%20No%203%2C%20Jai%20Hind%20Nagar%20Colony%2C%20Shaikpet%2C%20Hyderabad%2C%20Telangana%20500008%2C%20India!5e0!3m2!1sen!2sbd!4v1732530939345!5m2!1sen!2sbd"
-                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <form action="" class="">
-                            <input type="text" class="w-100 form-control border-0 py-3 mb-4" placeholder="Your Name">
-                            <input type="email" class="w-100 form-control border-0 py-3 mb-4"
-                                   placeholder="Enter Your Email">
-                            <textarea class="w-100 form-control border-0 mb-4" rows="5" cols="10"
-                                      placeholder="Your Message"></textarea>
-                            <button class="w-100 btn form-control border-secondary py-3 bg-white text-primary "
-                                    type="submit">Submit
-                            </button>
-                        </form>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="d-flex p-4 rounded mb-4 bg-white">
-                            <i class="fas fa-map-marker-alt fa-2x text-primary me-4"></i>
-                            <div>
-                                <h4>Address</h4>
-                                <p class="mb-2">Shaikpet, Hyderabad</p>
-                            </div>
-                        </div>
-                        <div class="d-flex p-4 rounded mb-4 bg-white">
-                            <i class="fas fa-envelope fa-2x text-primary me-4"></i>
-                            <div>
-                                <h4>Mail Us</h4>
-                                <p class="mb-2">info@example.com</p>
-                            </div>
-                        </div>
-                        <div class="d-flex p-4 rounded bg-white">
-                            <i class="fa fa-phone-alt fa-2x text-primary me-4"></i>
-                            <div>
-                                <h4>Telephone</h4>
-                                <p class="mb-2">(+91) 8884569722</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Contact End -->
-</div>
+<!-- Cart Page Start -->
+@template.contact-content()
+<!-- Cart Page End -->
+
 
 <!-- Footer Start -->
-<div hx-get="/footer" hx-trigger="load"></div>
+@template.footer()
 <!-- Footer End -->
+
 
 </body>
 

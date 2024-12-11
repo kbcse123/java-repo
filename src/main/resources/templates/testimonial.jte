@@ -1,3 +1,6 @@
+@param String env
+@param int cartCount
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,153 +32,25 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
 
 <body>
 
-<!-- Spinner Start -->
-<div id="spinner"
-     class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
-    <div class="spinner-grow text-primary" role="status"></div>
-</div>
-<!-- Spinner End -->
+    <!-- Navbar start -->
+    @template.header(env = env, cartCount = cartCount)
+    <!-- Navbar End -->
 
 
-<!-- Navbar start -->
-<div hx-get="/header" hx-trigger="load"></div>
-<!-- Navbar End -->
+    <!-- Cart Page Start -->
+    @template.testimonial-content()
+    <!-- Cart Page End -->
 
 
-<!-- Single Page Header start -->
-<%--
-<div class="container-fluid page-header py-5">
-    <h1 class="text-center text-white display-6">Testimonial</h1>
-    <ol class="breadcrumb justify-content-center mb-0">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">Pages</a></li>
-        <li class="breadcrumb-item active text-white">Testimonial</li>
-    </ol>
-</div>
+    <!-- Footer Start -->
+    @template.footer()
+    <!-- Footer End -->
 
---%>
-<!-- Single Page Header End -->
-
-
-<!-- Tastimonial Start -->
-<div id="main-content">
-    <div class="container-fluid testimonial py-5">
-        <div class="container py-5">
-            <div class="testimonial-header text-center">
-                <h4 class="text-primary">Our Testimonial</h4>
-                <h1 class="display-5 mb-5 text-dark">Our Client Saying!</h1>
-            </div>
-            <div class="owl-carousel testimonial-carousel">
-                <div class="testimonial-item img-border-radius bg-light rounded p-4">
-                    <div class="position-relative">
-                        <i class="fa fa-quote-right fa-2x text-secondary position-absolute"
-                           style="bottom: 30px; right: 0;"></i>
-                        <div class="mb-4 pb-4 border-bottom border-secondary">
-                            <p class="mb-0">Lorem Ipsum is simply dummy text of the printing Ipsum has been the
-                                industry's standard dummy text ever since the 1500s,
-                            </p>
-                        </div>
-                        <div class="d-flex align-items-center flex-nowrap">
-                            <div class="bg-secondary rounded">
-                                <img src="img/testimonial-1.jpg" class="img-fluid rounded"
-                                     style="width: 100px; height: 100px;" alt="">
-                            </div>
-                            <div class="ms-4 d-block">
-                                <h4 class="text-dark">Farhana</h4>
-                                <p class="m-0 pb-3">Software Engineer</p>
-                                <div class="d-flex pe-5">
-                                    <i class="fas fa-star text-primary"></i>
-                                    <i class="fas fa-star text-primary"></i>
-                                    <i class="fas fa-star text-primary"></i>
-                                    <i class="fas fa-star text-primary"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-item img-border-radius bg-light rounded p-4">
-                    <div class="position-relative">
-                        <i class="fa fa-quote-right fa-2x text-secondary position-absolute"
-                           style="bottom: 30px; right: 0;"></i>
-                        <div class="mb-4 pb-4 border-bottom border-secondary">
-                            <p class="mb-0">Lorem Ipsum is simply dummy text of the printing Ipsum has been the
-                                industry's standard dummy text ever since the 1500s,
-                            </p>
-                        </div>
-                        <div class="d-flex align-items-center flex-nowrap">
-                            <div class="bg-secondary rounded">
-                                <img src="img/testimonial-1.jpg" class="img-fluid rounded"
-                                     style="width: 100px; height: 100px;" alt="">
-                            </div>
-                            <div class="ms-4 d-block">
-                                <h4 class="text-dark">Shaik Khader</h4>
-                                <p class="m-0 pb-3">Software Architect</p>
-                                <div class="d-flex pe-5">
-                                    <i class="fas fa-star text-primary"></i>
-                                    <i class="fas fa-star text-primary"></i>
-                                    <i class="fas fa-star text-primary"></i>
-                                    <i class="fas fa-star text-primary"></i>
-                                    <i class="fas fa-star text-primary"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-item img-border-radius bg-light rounded p-4">
-                    <div class="position-relative">
-                        <i class="fa fa-quote-right fa-2x text-secondary position-absolute"
-                           style="bottom: 30px; right: 0;"></i>
-                        <div class="mb-4 pb-4 border-bottom border-secondary">
-                            <p class="mb-0">Lorem Ipsum is simply dummy text of the printing Ipsum has been the
-                                industry's standard dummy text ever since the 1500s,
-                            </p>
-                        </div>
-                        <div class="d-flex align-items-center flex-nowrap">
-                            <div class="bg-secondary rounded">
-                                <img src="img/testimonial-1.jpg" class="img-fluid rounded"
-                                     style="width: 100px; height: 100px;" alt="">
-                            </div>
-                            <div class="ms-4 d-block">
-                                <h4 class="text-dark">Rubina</h4>
-                                <p class="m-0 pb-3">Chef</p>
-                                <div class="d-flex pe-5">
-                                    <i class="fas fa-star text-primary"></i>
-                                    <i class="fas fa-star text-primary"></i>
-                                    <i class="fas fa-star text-primary"></i>
-                                    <i class="fas fa-star text-primary"></i>
-                                    <i class="fas fa-star text-primary"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Tastimonial End -->
-
-
-<!-- Footer Start -->
-<div hx-get="/footer" hx-trigger="load"></div>
-<!-- Footer End -->
-
-
-<!-- JavaScript Libraries -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="lib/easing/easing.min.js"></script>
-<script src="lib/waypoints/waypoints.min.js"></script>
-<script src="lib/lightbox/js/lightbox.min.js"></script>
-<script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-<!-- Template Javascript -->
-<script src="js/main.js"></script>
 </body>
 
 </html>

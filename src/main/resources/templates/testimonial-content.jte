@@ -41,11 +41,11 @@
                     </div>
                     <div class="d-flex align-items-center flex-nowrap">
                         <div class="bg-secondary rounded">
-                            <img src="img/testimonial-1.jpg" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
+                            <img src="img/my.png" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
                         </div>
                         <div class="ms-4 d-block">
                             <h4 class="text-dark">Shaik Khader</h4>
-                            <p class="m-0 pb-3">Software Architect</p>
+                            <p class="m-0 pb-3">Senior Software Engineer</p>
                             <div class="d-flex pe-5">
                                 <i class="fas fa-star text-primary"></i>
                                 <i class="fas fa-star text-primary"></i>

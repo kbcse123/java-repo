@@ -18,13 +18,13 @@ public class ItemServiceImpl implements ItemService {
     @PostConstruct
     public void loadItems() {
         items.add(new Item(1, "Masala Macoroni", CURRENCY, 40, "img/masala-macaroni.webp", 0, 0));
-        items.add(new Item(2, "Semiya (Vermicelli)", CURRENCY, 30, "img/semiya.webp", 0, 0));
+        items.add(new Item(2, "Semiya", CURRENCY, 30, "img/semiya.webp", 0, 0));
         items.add(new Item(3, "Upma", CURRENCY, 40, "img/upma.webp", 0, 0));
         items.add(new Item(4, "Lemon Rice", CURRENCY, 35, "img/lemon-rice.webp", 0, 0));
         items.add(new Item(5, "Poori Chana", CURRENCY, 40, "img/poori-chana.webp", 0, 0));
         items.add(new Item(6, "Masala Oats", CURRENCY, 30, "img/masala-oats.webp", 0, 0));
         items.add(new Item(7, "Pongal", CURRENCY, 40, "img/pongal.webp", 0, 0));
-        items.add(new Item(8, "Uggani (Puffed Rice)", CURRENCY, 40, "img/uggani.webp", 0, 0));
+        items.add(new Item(8, "Uggani", CURRENCY, 40, "img/uggani.webp", 0, 0));
 
     }
 

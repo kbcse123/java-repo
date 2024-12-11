@@ -5,12 +5,23 @@
 <div id="main-content">
     <div class="container-fluid fruite py-5">
         <div class="container py-5">
-
             <div class="text-center">
                 <div class="row g-4">
                     <div class="col-lg-12">
-                        <div class="row g-4">
-                            <h2 class="mb-4">Veg</h2>
+                        <div id="foodItems" class="row g-3">
+                            <br/>
+                            <div class="row justify-content-end mt-4">
+                                <div class="col-4">
+                                    <h2 class="mb-2">Veg</h2>
+                                </div>
+                                <div class="col-4">
+                                    <a href="/cart"  class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-2 ms-4 float-right">Go to Cart</a>
+                                </div>
+                            </div>
+
+                           <%-- <div style="position:fixed">
+                                <a href="/cart"  class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4 float-right">Proceed to Cart</a>
+                            </div>--%>
                             @for(Item item: items)
 
                                 <div class="col-md-6 col-lg-4 col-xl-3">
@@ -18,7 +29,7 @@
                                         <div class="fruite-img">
                                             <img src="${item.getImagePath()}" class="img-fluid w-100 rounded-top"
                                                  alt="${item.getName()}"
-                                                 style="height:250px" loading="lazy">
+                                                 style="height:180px" loading="lazy">
                                         </div>
                                         <%--<div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>--%>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
@@ -37,7 +48,7 @@
                                                 --%>
                                                 <div class="input-group quantity mt-4" style="width: 100px;">
                                                     <div class="input-group-btn">
-                                                        <button hx-delete="/cart/${item.getId()}" hx-target="#cartCounter"
+                                                        <button hx-delete="/item/${item.getId()}" hx-target="#cartCounter"
                                                                 class="btn btn-sm btn-minus rounded-circle bg-light border">
                                                             <i class="fa fa-minus"></i>
                                                         </button>
@@ -45,7 +56,7 @@
                                                     <input  type="text" class="form-control form-control-sm text-center border-0"
                                                            value="${item.getQuantity()}" readonly>
                                                     <div class="input-group-btn">
-                                                        <button hx-post="/cart/${item.getId()}" hx-target="#cartCounter"
+                                                        <button hx-get="/item/${item.getId()}" hx-target="#cartCounter"
                                                                 class="btn btn-sm btn-plus rounded-circle bg-light border">
                                                             <i class="fa fa-plus"></i>
                                                         </button>

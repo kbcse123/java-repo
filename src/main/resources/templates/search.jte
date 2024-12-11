@@ -1,9 +1,12 @@
+@param String env
+@param int cartCount
+
 <!DOCTYPE html>
 <html lang="en">
 
     <head>
         <meta charset="utf-8">
-        <title>Fruitables - Vegetable Website Template</title>
+        <title>Happy Tummy</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -28,22 +31,12 @@
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
         <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+        <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     </head>
 
     <body>
 
-        <!-- Spinner Start -->
-        <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
-            <div class="spinner-grow text-primary" role="status"></div>
-        </div>
-        <!-- Spinner End -->
-
-
-        <!-- Navbar start -->
-        <div hx-get="/header" hx-trigger="load"></div>
-        <!-- Navbar End -->
-
-
+       @template.header(env = env, cartCount = cartCount)
         <!-- Fruits Shop Start-->
         <div class="container-fluid fruite py-5">
             <div class="container py-5">
@@ -384,7 +377,7 @@
 
 
         <!-- Footer Start -->
-        <div hx-get="/footer" hx-trigger="load"></div>
+        @template.footer()
         <!-- Footer End -->
 
     <!-- JavaScript Libraries -->

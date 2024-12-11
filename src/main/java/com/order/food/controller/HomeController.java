@@ -8,13 +8,9 @@ import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
-//@AllArgsConstructor
 @Log
 public class HomeController {
     private ItemService itemService;
@@ -26,55 +22,54 @@ public class HomeController {
         this.itemService = itemService;
     }
 
-    @GetMapping("/header")
-    public String header() {
-        log.info("in header");
-        return "header";
-    }
-
-    @GetMapping("/footer")
-    public String footer() {
-        log.info("in footer");
-        return "footer";
-    }
-
     @GetMapping(value = {"/", "/home"})
     public String index(Model model, HttpServletRequest request) {
         log.info("env = "+ env);
-        model.addAttribute("env", env);
-        model.addAttribute("cartCount", getCartCount(request));
+        loadHeaderAttributes(model,request);
         loadItems(model);
         return "home";
     }
 
-
-    @GetMapping("/home-content")
-    public String homeContent(Model model) {
+    @GetMapping("/cart")
+    public String cart(Model model, HttpServletRequest request) {
+        log.info("in cart");
+        loadHeaderAttributes(model,request);
         loadItems(model);
-        return "home-content";
+        return "cart";
     }
 
-    private void loadItems(Model model) {
-        model.addAttribute("items", itemService.getItems());
-    }
-
-    @GetMapping("/cartCounter")
-    public String cartCounter(Model model, HttpServletRequest request) {
+    @GetMapping("/cart-content")
+    public String cartContent(Model model, HttpServletRequest request) {
+        log.info("in cart-content");
         model.addAttribute("cartCount", getCartCount(request));
-        log.info("in cartCounter");
+        loadItems(model);
+        return "cart-content";
+    }
+
+    @GetMapping("/item/{itemId}")
+    public String addItemToCart(Model model, @PathVariable int itemId, HttpServletRequest request) {
+        int cartCount = getCartCount(request);
+        if (cartCount >= 0) {
+            request.getSession().setAttribute("cartCount", ++cartCount);
+            itemService.addToCart(itemId, request);
+        }
+        model.addAttribute("cartCount", cartCount);
         return "cartCounter";
     }
 
-    private int getCartCount(HttpServletRequest request) {
-        if (request.getSession().getAttribute("cartCount") != null) {
-            return (Integer) request.getSession().getAttribute("cartCount");
-        } else {
-            request.getSession().setAttribute("cartCount", 0);
-            return 0;
+    @DeleteMapping("/item/{itemId}")
+    public String deleteItemFromCart(Model model, @PathVariable int itemId, HttpServletRequest request) {
+        int cartCount = getCartCount(request);
+        if (cartCount > 0) {
+            cartCount -= 1;
+            request.getSession().setAttribute("cartCount", cartCount);
+            itemService.deleteFromCart(itemId, request);
         }
+        model.addAttribute("cartCount", cartCount);
+        loadItems(model);
+        return "cartCounter";
     }
-
-    @PostMapping("/cart/{itemId}")
+    @GetMapping("/cart/{itemId}")
     public String addToCart(Model model, @PathVariable int itemId, HttpServletRequest request) {
         int cartCount = getCartCount(request);
         if (cartCount >= 0) {
@@ -94,43 +89,49 @@ public class HomeController {
             itemService.deleteFromCart(itemId, request);
         }
         model.addAttribute("cartCount", cartCount);
+        loadItems(model);
         return "cartCounter";
     }
 
-    @GetMapping("/cart")
-    public String cart(Model model, HttpServletRequest request) {
-        log.info("in cart");
-        model.addAttribute("cartCount", getCartCount(request));
-        loadItems(model);
-        return "cart";
-    }
-
-    @GetMapping("/cart-content")
-    public String cartContent(Model model, HttpServletRequest request) {
-        log.info("in cart-content");
-        model.addAttribute("cartCount", getCartCount(request));
-        loadItems(model);
-        return "cart-content";
-    }
-
     @GetMapping("/checkout")
-    public String checkout(Model model) {
-        log.info("in checkout");
+    public String checkout(Model model, HttpServletRequest request) {
+        loadHeaderAttributes(model,request);
         loadItems(model);
+        log.info("in checkout");
         return "checkout";
     }
 
-    @GetMapping("/checkout-content")
-    public String checkoutContent(Model model) {
-        loadItems(model);
-        log.info("in checkout-content");
-        return "checkout-content";
-    }
-
     @GetMapping("/contact")
-    public String contact() {
+    public String contact(Model model, HttpServletRequest request) {
         log.info("in checkout");
+        loadHeaderAttributes(model,request);
         return "contact";
     }
+
+    @GetMapping("/testimonial")
+    public String testimonial(Model model, HttpServletRequest request) {
+        log.info("in testimonial");
+        loadHeaderAttributes(model,request);
+        return "testimonial";
+    }
+
+    private void loadItems(Model model) {
+        model.addAttribute("items", itemService.getItems());
+    }
+
+    private int getCartCount(HttpServletRequest request) {
+        if (request.getSession().getAttribute("cartCount") != null) {
+            return (Integer) request.getSession().getAttribute("cartCount");
+        } else {
+            request.getSession().setAttribute("cartCount", 0);
+            return 0;
+        }
+    }
+
+    private void loadHeaderAttributes(Model model, HttpServletRequest request) {
+        model.addAttribute("env", env);
+        model.addAttribute("cartCount", getCartCount(request));
+    }
+
 
 }

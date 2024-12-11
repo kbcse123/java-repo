@@ -1,3 +1,6 @@
+@param String env
+@param int cartCount
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,6 +31,7 @@
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
         <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+        <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     </head>
 
     <body>
@@ -40,7 +44,7 @@
 
 
         <!-- Navbar start -->
-        <div hx-get="/header" hx-trigger="load"></div>
+        @template.header(env = env, cartCount = cartCount)
         <!-- Navbar End -->
 
 
@@ -530,20 +534,9 @@
     
 
         <!-- Footer Start -->
-        <div hx-get="/footer" hx-trigger="load"></div>
+        @template.footer()
         <!-- Footer End -->
 
-        
-    <!-- JavaScript Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
     </body>
 
 </html>

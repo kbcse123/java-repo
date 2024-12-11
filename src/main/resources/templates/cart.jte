@@ -1,9 +1,14 @@
+@import com.order.food.model.Item
+@param java.util.List<Item> items
+@param String env
+@param int cartCount
+
 <!DOCTYPE html>
 <html lang="en">
 
     <head>
         <meta charset="utf-8">
-        <title>Fruitables - Vegetable Website Template</title>
+        <title>Happy Tummy</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -18,9 +23,8 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
         <!-- Libraries Stylesheet -->
-        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
+      <%--  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">--%>
 
         <!-- Customized Bootstrap Stylesheet -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -28,31 +32,22 @@
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
         <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+        <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     </head>
 
     <body>
 
-        <!-- Spinner Start -->
-        <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
-            <div class="spinner-grow text-primary" role="status"></div>
-        </div>
-        <!-- Spinner End -->
-
-
         <!-- Navbar start -->
-        <div hx-get="/header" hx-trigger="load"></div>
+        @template.header(env = env, cartCount = cartCount)
         <!-- Navbar End -->
 
-
         <!-- Cart Page Start -->
-        <div hx-get="/cart-content" hx-trigger="load"></div>
+        @template.cart-content(items = items)
         <!-- Cart Page End -->
 
-
         <!-- Footer Start -->
-        <div hx-get="/footer" hx-trigger="load"></div>
+        @template.footer()
         <!-- Footer End -->
-
 
     </body>
 

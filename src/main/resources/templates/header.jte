@@ -1,4 +1,13 @@
 @param String env
+@param int cartCount
+
+<!-- Spinner Start -->
+<div id="spinner"
+     class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+    <div class="spinner-grow text-primary" role="status"></div>
+</div>
+<!-- Spinner End -->
+
 <div class="container-fluid fixed-top bg-dark ">
     <%--
     <div class="container topbar bg-primary d-none d-lg-block">
@@ -25,14 +34,19 @@
                 <span class="fa fa-bars text-primary"></span>
             </button>
             <div class="collapse navbar-collapse bg-dark" id="navbarCollapse">
-                <div class="navbar-nav mx-auto">
-                    <%--<a href="/" class="nav-item nav-link ">Home</a>--%>
+                <div class="navbar-nav mx-auto" hx-boost="true">
+                    <%-- for partial rendering
                     <a href="#" hx-get="/home-content" hx-target="#main-content" hx-push-url="/home" class="nav-item nav-link text-secondary mb-0 fs-5">Home</a>
-                    <%--<a href="/cart" class="nav-item nav-link">Cart</a>--%>
-                    <a href="#" hx-get="/cart-content" hx-target="#main-content" hx-push-url="/cart" class="nav-item nav-link text-secondary mb-0 fs-5">Cart</a>
-                    <a href="#" hx-get="/checkout-content" hx-target="#main-content" hx-push-url="/checkout" class="nav-item nav-link text-secondary mb-0 fs-5">Checkout</a>
-                    <%--<a href="#" hx-get="/testimonial-content" hx-target="#main-content"  class="nav-item nav-link">Testimonial</a>--%>
+                    --%>
+                    <%--with hx-boost="true" the submit calls will be replaced with ajax get.--%>
+
+                    <a href="/home" class="nav-item nav-link text-secondary mb-0 fs-5">Home</a>
+                    <a href="/cart" class="nav-item nav-link text-secondary mb-0 fs-5">Cart</a>
+                    <a href="/checkout" class="nav-item nav-link text-secondary mb-0 fs-5">Checkout</a>
+                    <%--<a href="/search" class="nav-item nav-link text-secondary mb-0 fs-5">Search</a>--%>
+                    <a href="/testimonial" class="nav-item nav-link text-secondary mb-0 fs-5">Testimonial</a>
                     <a href="/contact" class="nav-item nav-link text-secondary mb-0 fs-5">Contact</a>
+
                    <%-- <a href="/search"  class="nav-item nav-link">Search</a>
                     <a href="/detail" class="nav-item nav-link">Detail</a>--%>
                     <%--<div class="nav-item dropdown">
@@ -46,7 +60,8 @@
                     </div>--%>
 
                 </div>
-                <div hx-get="/cartCounter" hx-trigger="load"></div>
+                @template.cartCounter(cartCount = cartCount)
+               <%-- <div hx-get="/cartCounter" hx-trigger="load"></div>--%>
                 <%--
                 <div id="cartCounter" class="d-flex m-3 me-0">
                    --%><%--
