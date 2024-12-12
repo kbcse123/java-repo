@@ -1,5 +1,7 @@
+@import com.order.food.model.CartTotal
 @import com.order.food.model.Item
 @param java.util.List<Item> items
+@param CartTotal cartTotal
 
 <!-- Checkout Page Start -->
 <div id="main-content">
@@ -86,31 +88,61 @@
 
                                         <tr class="align-items-center">
                                             <th scope="row">
-                                                <div class="d-flex align-items-center mt-2">
+                                                <div class="d-flex align-items-center">
                                                     <img src="${item.getImagePath()}" class="img-fluid rounded-circle"
-                                                         style="width: 90px; height: 90px;" alt="">
+                                                         style="width: 60px; height: 60px;" alt="">
                                                 </div>
                                             </th>
-                                            <td class="py-5">${item.getName()}</td>
-                                            <td class="py-5">${item.getPrice()}</td>
-                                            <td class="py-5">${item.getQuantity()}</td>
-                                            <td class="py-5">${item.getTotal()}</td>
+                                            <td class="py-3">${item.getName()}</td>
+                                            <td class="py-3">${item.getPrice()}</td>
+                                            <td class="py-3">${item.getQuantity()}</td>
+                                            <td class="py-3">${item.getTotal()}</td>
                                         </tr>
 
                                     @endif
                                 @endfor
 
-                                <tr>
-                                    <th scope="row">
-                                    </th>
-                                    <td class="py-5"></td>
-                                    <td class="py-5"></td>
-                                    <td class="py-5">
-                                        <p class="mb-0 text-dark py-3">Subtotal</p>
+                                <tr style="border-style:none;border-color:white">
+                                    <td class="py-3"></td>
+                                </tr>
+                                <tr class="align-items-center" style="border-style:none;border-color:white">
+                                    <td></td>
+                                    <td ></td>
+                                    <td ></td>
+                                    <td >
+                                        <p class="mb-0 text-dark">SubTotal:</p>
                                     </td>
-                                    <td class="py-5">
-                                        <div class="py-3 border-bottom border-top">
-                                            <p class="mb-0 text-dark">$414.00</p>
+                                    <td >
+                                        <div>
+                                            <p class="mb-0 text-dark">${cartTotal.getSubTotal()}</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="align-items-center" style="border-style:none;border-color:white">
+                                    <td></td>
+                                    <td ></td>
+                                    <td ></td>
+                                    <td >
+                                        <p class="mb-0 text-dark">Delivery Fee:</p>
+                                    </td>
+                                    <td >
+                                        <div >
+                                            <p class="mb-0 text-dark">${cartTotal.getDeliveryFee()}</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="align-items-center" >
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                       <%-- <h4>Total</h4>--%>
+                                        <p class="text-dark fw-bold">Total</p>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <%--<h4 class="text-dark">Rs.${cartTotal.getTotal()}</h4>--%>
+                                            <p class="text-dark fw-bold">Rs. ${cartTotal.getTotal()}</p>
                                         </div>
                                     </td>
                                 </tr>
@@ -119,10 +151,10 @@
                             </table>
                         </div>
 
-                        <div class="row g-4 text-center align-items-center justify-content-center border-bottom py-3">
+                        <div class="row g-4 text-center align-items-center justify-content-center border-bottom">
                             <div class="col-12">
                                 <div class="form-check text-start my-3">
-                                    <input type="radio" id="payment1" name="payment" value="PhonePe">
+                                    <input type="radio" id="payment1" name="payment" value="PhonePe" checked>
                                     <label for="payment1">PhonePe</label>
                                     <br>
                                     <input type="radio" id="payment2" name="payment" value="COD">

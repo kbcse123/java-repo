@@ -1,14 +1,16 @@
 @import com.order.food.model.Item
+@import com.order.food.model.CartTotal
 @param java.util.List<Item> items
 @param String env
 @param int cartCount
+@param CartTotal cartTotal
 
 <!DOCTYPE html>
 <html lang="en">
 
     <head>
         <meta charset="utf-8">
-        <title>Happy Tummy</title>
+        <title>Happy Tummy - Food to remember</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -45,7 +47,7 @@
 
 
     <!-- Cart Page Start -->
-    @template.checkout-content(items = items)
+    @template.checkout-content(items = items, cartTotal = cartTotal)
     <!-- Cart Page End -->
 
 

@@ -1,5 +1,6 @@
 package com.order.food.service;
 
+import com.order.food.model.CartTotal;
 import com.order.food.model.Item;
 import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import java.util.List;
 public class ItemServiceImpl implements ItemService {
     private static String CURRENCY = "Rs. ";
     public static List<Item> items = new ArrayList<>();
+    public static CartTotal cartTotal=new CartTotal();
 
     @PostConstruct
     public void loadItems() {
@@ -35,13 +37,20 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public void addToCart(int itemId, HttpServletRequest request) {
-        updateItem(findItem(getItems(), itemId), true);
+        Item item = findItem(getItems(), itemId);
+        updateItem(item, true);
+        //update cart total
+        cartTotal.setSubTotal(item.getPrice() + cartTotal.getSubTotal());
+        cartTotal.setTotal(cartTotal.getSubTotal() + cartTotal.getDeliveryFee());
         log.info("item id " + itemId + " added to cart ");
     }
 
     @Override
     public void deleteFromCart(int itemId, HttpServletRequest request) {
-        updateItem(findItem(getItems(), itemId), false);
+        Item item = findItem(getItems(), itemId);
+        updateItem(item, false);
+        cartTotal.setSubTotal(cartTotal.getSubTotal() - item.getPrice());
+        cartTotal.setTotal(cartTotal.getSubTotal() + cartTotal.getDeliveryFee());
         log.info("item id " + itemId + " deleted from cart ");
     }
 
@@ -62,5 +71,9 @@ public class ItemServiceImpl implements ItemService {
         }
         //control will never come here
         return new Item();
+    }
+    @Override
+    public CartTotal getCartTotal(){
+        return cartTotal;
     }
 }

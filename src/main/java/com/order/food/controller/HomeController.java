@@ -35,14 +35,17 @@ public class HomeController {
         log.info("in cart");
         loadHeaderAttributes(model,request);
         loadItems(model);
+        model.addAttribute("cartTotal",itemService.getCartTotal());
         return "cart";
     }
 
     @GetMapping("/cart-content")
     public String cartContent(Model model, HttpServletRequest request) {
         log.info("in cart-content");
-        model.addAttribute("cartCount", getCartCount(request));
+        cart(model, request);
+        /*model.addAttribute("cartCount", getCartCount(request));
         loadItems(model);
+        model.addAttribute("cartTotal",itemService.getCartTotal());*/
         return "cart-content";
     }
 
@@ -77,7 +80,8 @@ public class HomeController {
             itemService.addToCart(itemId, request);
         }
         model.addAttribute("cartCount", cartCount);
-        return "cartCounter";
+        cart(model, request);
+        return "cart-content";
     }
 
     @DeleteMapping("/cart/{itemId}")
@@ -90,13 +94,15 @@ public class HomeController {
         }
         model.addAttribute("cartCount", cartCount);
         loadItems(model);
-        return "cartCounter";
+        cart(model, request);
+        return "cart-content";
     }
 
     @GetMapping("/checkout")
     public String checkout(Model model, HttpServletRequest request) {
         loadHeaderAttributes(model,request);
         loadItems(model);
+        model.addAttribute("cartTotal",itemService.getCartTotal());
         log.info("in checkout");
         return "checkout";
     }
