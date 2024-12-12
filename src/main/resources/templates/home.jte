@@ -32,7 +32,8 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <%--<script src="https://unpkg.com/htmx.org@1.9.10"></script>--%>
+    <script src="js/htmx.min.js"></script>
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
 
