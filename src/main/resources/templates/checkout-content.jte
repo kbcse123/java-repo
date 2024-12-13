@@ -137,12 +137,12 @@
                                     <td></td>
                                     <td>
                                        <%-- <h4>Total</h4>--%>
-                                        <p class="text-dark fw-bold">Total</p>
+                                        <p class="text-dark fw-bold">Total:</p>
                                     </td>
                                     <td>
                                         <div>
                                             <%--<h4 class="text-dark">Rs.${cartTotal.getTotal()}</h4>--%>
-                                            <p class="text-dark fw-bold">Rs. ${cartTotal.getTotal()}</p>
+                                            <p class="text-dark fw-bold">${cartTotal.getTotal()}</p>
                                         </div>
                                     </td>
                                 </tr>
