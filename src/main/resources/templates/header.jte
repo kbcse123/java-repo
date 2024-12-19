@@ -41,11 +41,11 @@
                     <%--with hx-boost="true" the submit calls will be replaced with ajax get.--%>
 
                     <a href="/home" class="nav-item nav-link text-secondary mb-0 fs-5">Home</a>
-                    <a href="/cart" class="nav-item nav-link text-secondary mb-0 fs-5">Cart</a>
-                    <a href="/checkout" class="nav-item nav-link text-secondary mb-0 fs-5">Checkout</a>
-                    <%--<a href="/search" class="nav-item nav-link text-secondary mb-0 fs-5">Search</a>--%>
+                    <%-- <a href="/cart" class="nav-item nav-link text-secondary mb-0 fs-5">Cart</a>
+                     <a href="/checkout" class="nav-item nav-link text-secondary mb-0 fs-5">Checkout</a>
+                     <a href="/search" class="nav-item nav-link text-secondary mb-0 fs-5">Search</a>--%>
                     <a href="/testimonial" hx-boost="false" class="nav-item nav-link text-secondary mb-0 fs-5">Testimonial</a>
-                    <a href="/contact" class="nav-item nav-link text-secondary mb-0 fs-5">Contact</a>
+                    <a href="/contact" hx-boost="false" class="nav-item nav-link text-secondary mb-0 fs-5">Contact</a>
 
                    <%-- <a href="/search"  class="nav-item nav-link">Search</a>
                     <a href="/detail" class="nav-item nav-link">Detail</a>--%>

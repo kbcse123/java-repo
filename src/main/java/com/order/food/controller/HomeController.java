@@ -24,7 +24,7 @@ public class HomeController {
 
     @GetMapping(value = {"/", "/home"})
     public String index(Model model, HttpServletRequest request) {
-        log.info("env = "+ env);
+        log.info("profile loaded = "+ env);
         loadHeaderAttributes(model,request);
         loadItems(model);
         return "home";
@@ -39,13 +39,17 @@ public class HomeController {
         return "cart";
     }
 
+    @GetMapping("/register")
+    public String register(Model model, HttpServletRequest request) {
+        log.info("in register");
+        loadHeaderAttributes(model,request);
+        return "register";
+    }
+
     @GetMapping("/cart-content")
     public String cartContent(Model model, HttpServletRequest request) {
         log.info("in cart-content");
         cart(model, request);
-        /*model.addAttribute("cartCount", getCartCount(request));
-        loadItems(model);
-        model.addAttribute("cartTotal",itemService.getCartTotal());*/
         return "cart-content";
     }
 

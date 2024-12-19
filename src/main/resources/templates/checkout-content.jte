@@ -169,6 +169,9 @@
                                     class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">Place Order
                             </button>
                         </div>
+                        <div class="row g-4 text-center align-items-center justify-content-center pt-4">
+                            <a href="/cart"  class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">Edit Cart</a>
+                        </div>
                     </div>
                 </div>
             </form>
