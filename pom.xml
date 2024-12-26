@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.order.food</groupId>
-	<artifactId>jte-htmx</artifactId>
+	<artifactId>happy-tummy</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>jte-htmx</name>
+	<name>happy-tummy</name>
 	<description>Homely food</description>
 	<url/>
 	<licenses>

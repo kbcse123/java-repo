@@ -44,11 +44,11 @@
                     <%-- <a href="/cart" class="nav-item nav-link text-secondary mb-0 fs-5">Cart</a>
                      <a href="/checkout" class="nav-item nav-link text-secondary mb-0 fs-5">Checkout</a>
                      <a href="/search" class="nav-item nav-link text-secondary mb-0 fs-5">Search</a>--%>
+                    <a href="/contact" class="nav-item nav-link text-secondary mb-0 fs-5">Contact</a>
                     <a href="/testimonial" hx-boost="false" class="nav-item nav-link text-secondary mb-0 fs-5">Testimonial</a>
-                    <a href="/contact" hx-boost="false" class="nav-item nav-link text-secondary mb-0 fs-5">Contact</a>
 
-                   <%-- <a href="/search"  class="nav-item nav-link">Search</a>
-                    <a href="/detail" class="nav-item nav-link">Detail</a>--%>
+                    <%-- <a href="/search"  class="nav-item nav-link">Search</a>
+                     <a href="/detail" class="nav-item nav-link">Detail</a>--%>
                     <%--<div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu m-0 bg-secondary rounded-0">

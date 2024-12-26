@@ -14,4 +14,6 @@ public interface ItemService {
     void deleteFromCart(int itemId, HttpServletRequest request);
 
     CartTotal getCartTotal();
+
+
 }

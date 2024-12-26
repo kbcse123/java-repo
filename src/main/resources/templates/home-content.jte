@@ -83,6 +83,41 @@
                                         <h4>Khichdi Kheema</h4>
                                         <%--<p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>--%>
                                         <div class="d-flex justify-content-between flex-lg-wrap">
+                                            <div class="text-dark fs-5 fw-bold mt-4">Rs. 60</div>
+                                            <%--
+                                            <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                            --%>
+                                            <div class="input-group quantity mt-4" style="width: 100px;">
+                                                <div class="input-group-btn">
+                                                    <button class="btn btn-sm btn-minus rounded-circle bg-light border">
+                                                        <i class="fa fa-minus"></i>
+                                                    </button>
+                                                </div>
+                                                <input id="quantity" type="text" class="form-control form-control-sm text-center border-0"
+                                                       value="0">
+                                                <div class="input-group-btn">
+                                                    <button class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                                        <i class="fa fa-plus"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6 col-lg-4 col-xl-3">
+                                <div class="rounded position-relative fruite-item">
+                                    <div class="fruite-img">
+                                        <img src="img/paya-nihari.webp" class="img-fluid w-100 rounded-top" alt="" style="height:250px" loading="lazy">
+                                    </div>
+                                    <%--<div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>--%>
+                                    <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                        <h4>Paya Nihari</h4>
+                                        <%--<p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>--%>
+                                        <div class="d-flex justify-content-between flex-lg-wrap">
                                             <div class="text-dark fs-5 fw-bold mt-4">Rs. 100</div>
                                             <%--
                                             <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>

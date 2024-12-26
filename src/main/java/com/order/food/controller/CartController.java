@@ -1,6 +1,5 @@
 package com.order.food.controller;
 
-
 import com.order.food.service.ItemService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.java.Log;
@@ -12,33 +11,41 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 @Log
-public class HomeController extends BaseController{
+public class CartController  extends BaseController{
 
-    public HomeController(ItemService itemService) {
+    public CartController(ItemService itemService) {
         super(itemService);
     }
 
-    @GetMapping(value = {"/", "/home"})
-    public String index(Model model, HttpServletRequest request) {
-        log.info("profile loaded = "+ env);
+    @GetMapping("/cart")
+    public String cart(Model model, HttpServletRequest request) {
+        log.info("in cart");
         loadHeaderAttributes(model,request);
         loadItems(model);
-        return "home";
+        model.addAttribute("cartTotal",itemService.getCartTotal());
+        return "cart";
     }
 
-    @GetMapping("/item/{itemId}")
-    public String addItem(Model model, @PathVariable int itemId, HttpServletRequest request) {
+    @GetMapping("/cart-content")
+    public String cartContent(Model model, HttpServletRequest request) {
+        log.info("in cart-content");
+        cart(model, request);
+        return "cart-content";
+    }
+    @GetMapping("/cart/{itemId}")
+    public String addToCart(Model model, @PathVariable int itemId, HttpServletRequest request) {
         int cartCount = getCartCount(request);
         if (cartCount >= 0) {
             request.getSession().setAttribute("cartCount", ++cartCount);
             itemService.addToCart(itemId, request);
         }
         model.addAttribute("cartCount", cartCount);
-        return "cartCounter";
+        cart(model, request);
+        return "cart-content";
     }
 
-    @DeleteMapping("/item/{itemId}")
-    public String deleteItem(Model model, @PathVariable int itemId, HttpServletRequest request) {
+    @DeleteMapping("/cart/{itemId}")
+    public String deleteFromCart(Model model, @PathVariable int itemId, HttpServletRequest request) {
         int cartCount = getCartCount(request);
         if (cartCount > 0) {
             cartCount -= 1;
@@ -47,7 +54,8 @@ public class HomeController extends BaseController{
         }
         model.addAttribute("cartCount", cartCount);
         loadItems(model);
-        return "cartCounter";
+        cart(model, request);
+        return "cart-content";
     }
 
 }
